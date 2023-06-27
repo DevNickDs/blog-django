@@ -1,0 +1,11 @@
+# Django dirs
+/__pycache__/
+/migrations/
+
+# Django files
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+/logs/
