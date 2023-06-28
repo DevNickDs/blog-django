@@ -16,22 +16,27 @@ def general(request):
     return render(request, 'general.html', {'posts': posts})
 
 def anime_manga(request):
-    posts = Post.objects.filter(
-        state = True,
-        category = Category.objects.get(name='Anime y Manga')
-    )
+    posts = search_posts('Anime y Manga')
     return render(request, 'anime_manga.html', {'posts': posts})
 
 def technology(request):
-    posts = Post.objects.filter(
-        state = True,
-        category = Category.objects.get(name='Technology')
-    )
+    posts =search_posts('Technology')
     return render(request, 'technology.html', {'posts': posts})
 
 def video_games(request):
+    posts = search_posts('Gaming')
+    return render(request, 'video_games.html', {'posts': posts})
+
+def search_posts(category_name):
     posts = Post.objects.filter(
         state = True,
-        category = Category.objects.get(name='Gaming')
+        category = Category.objects.get(name__iexact=category_name)
     )
-    return render(request, 'video_games.html', {'posts': posts})
+    return posts
+
+def details_post(request, slug):
+    post = Post.objects.get(
+        slug = slug
+    )
+    #print(post)
+    return render(request, 'post.html', {'post': post})
