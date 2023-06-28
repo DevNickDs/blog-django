@@ -55,6 +55,25 @@
         </div>
       </div>
     </header>
+    {% block search %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 search">
+          <form method="get">
+            <div id="custom-search-input">
+              <div class="input-group col-md-12">
+                <input type="text" class="form-control mr-sm-2 p-4 m-auto" placeholder="Search..." name="search" value="{{ request.GET.search }}">
+                <span class="input-group-list">
+                  <i class="icon icon-search"></i>
+                  <button type="submit" class="btn btn-success my-2 my-sm-0">Search</button>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endblock search %}
     <!-- Main Content -->
     <div class="container">
       <div class="row">
