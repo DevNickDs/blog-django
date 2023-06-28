@@ -49,8 +49,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>{% block title_body %}My Blog{% endblock title_body %}</h1>
-              <span class="subheading">A Blog Theme by Start Bootstrap</span>
+              <h1 class="fs-2">{% block title_body %}My Blog{% endblock title_body %}</h1>
             </div>
           </div>
         </div>
@@ -60,20 +59,26 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-preview">
-            <a href="post.html">
-              <h2 class="post-title">
-                Man must explore, and this is exploration at its greatest
-              </h2>
-              <h3 class="post-subtitle">
-                Problems look mighty small from 150 miles up
-              </h3>
-            </a>
-            <p class="post-meta">Posted by
-              <a href="#">Start Bootstrap</a>
-              on September 24, 2018</p>
-          </div>
-          <hr>
+          {% if posts %}
+            {% for post in posts %}
+              <div class="post-preview">
+                <a href="post.html">
+                  <h2 class="post-title">
+                    {{ post.title }}
+                  </h2>
+                  <h3 class="post-subtitle">
+                    {{ post.description }}
+                  </h3>
+                </a>
+                <p class="post-meta">Posted by
+                  <strong >{{ post.author }}</strong>
+                  on {{ post.created_at }}</p>
+              </div>
+              <hr>
+            {% endfor %}
+          {% else %}
+          <h1>No posts yet</h1>
+          {% endif %}
           <!-- Pager -->
           <div class="clearfix">
             <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
