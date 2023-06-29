@@ -101,10 +101,30 @@
           {% endif %}
           {% endblock content %}
           <!-- Pager -->
-
+        </div>
+      </div>
+      <div class="row m-5">
+        <div class="col-md-12">
+          <div class="col-md-6 float-left">
+            {% if posts.has_previous %}
+            <div class="clearfix">
+              <a href="?page={{ posts.previous_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}" class="btn btn-primary float-left">Previous</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="col-md-6 float-right">
+            {% if posts.has_next %}
+            <div class="clearfix">
+              <a href="?page={{ posts.next_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}" class="btn btn-primary float-right">Next</a>
+            </div>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
+    
     <hr>
     <!-- Footer -->
     <footer>
